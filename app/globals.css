@@ -2,26 +2,57 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+
+
+.blueColor{
+  background-color:#314f85;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.transparentColor {
+  background-color: rgb(249, 249, 249,0.07)
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.height{
+  height: 49.8vh
+}
+
+.width {
+  width : 25vw
+}
+
+.leftCenter {
+  left: 25vw;
+}
+
+.rightCenter {
+  right: 25vw;
+}
+
+.heightRect {
+  height: 85vh;
+}
+
+.widthHeight{
+  width: 80%;
+}
+
+.functionHeight{
+  height: 60vh;
+}
+
+.paymentBackground{
+  background-color: rgb(245, 250, 253);
+}
+
+.roundedBg{
+  border-top-left-radius: 20%;
+}
+
+
+.imageWidth{
+  max-width:100%!important ;
+}
+
+.imageHeight{
+  max-height: 100%!important;
 }
