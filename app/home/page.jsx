@@ -1,11 +1,9 @@
 import React from 'react'
-import Navbar from '../navbar/Navbar'
 import HeroContent from '../home/app'
 
 const Hero = () => {
   return (
     <div className="relative w-full h-screen rounded-br-full blueColor">
-      <Navbar />
       <HeroContent/>
       <div className="absolute top-0 left-0 rounded-r-full width height transparentColor "></div>
       <div className="absolute bottom-0 rounded-r-full width height transparentColor "></div>

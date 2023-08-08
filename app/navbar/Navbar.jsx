@@ -1,106 +1,62 @@
-'use client'
+"use client";
+import { FaBars } from "react-icons/fa";
 
-import Image from 'next/image';
-import React, { useState } from 'react';
-import {MdKeyboardArrowDown} from "react-icons/md"
+import React, { useState } from "react";
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
+  let Links = [
+    { name: "Home", link: "/home" },
+    { name: "Adversite", link: "/testimonial" },
+    { name: "Supports", link: "/function" },
+    { name: "Contact", link: "/question" },
+  ];
+  let [open, setOpen] = useState(false);
   return (
-   <div className='m-auto md:container'>
-     <nav className="flex items-center justify-between px-6 py-4 text-white">
-      {/* Logo */}
-      <div className="flex items-center">
-       <Image alt='logo' width={20} height={20} src='/images/logo.png'></Image>
-        <span className="ml-2 text-lg font-semibold">Landguru</span>
-      </div>
-
-      {/* Centered Links */}
-      <div className="justify-center flex-grow hidden md:flex">
-        <a href="#" className="relative px-4 py-2 hover:text-gray-400">
-          Home
-        </a>
-        <a href="#" className="relative px-4 py-2 hover:text-gray-400">
-          Adversite <span className='absolute top-3'><MdKeyboardArrowDown/></span>
-        </a>
-        <a href="#" className="relative px-4 py-2 hover:text-gray-400">
-          Supports <span className='absolute top-3'><MdKeyboardArrowDown/></span>
-        </a>
-        <a href="#" className="relative px-4 py-2 hover:text-gray-400">
-          Contact <span className='absolute top-3'><MdKeyboardArrowDown/></span>
-        </a>
-      </div>
-
-      {/* Button */}
-      <button className="px-4 py-2 text-white border rounded-full hover:cursor-pointer font-sm hover:bg-blue-600">
-        Get Started
-      </button>
-
-      {/* Mobile menu button */}
-      <div className="flex items-center md:hidden">
-        <button
-          onClick={toggleMenu}
-          className="outline-none mobile-menu-button"
+    <div className="fixed top-0 left-0 z-50 w-full shadow-md md:bg-transparent blueColor">
+      <div className="items-center justify-between py-4 md:flex md:px-10 px-7">
+        <div
+          className="font-bold text-2xl cursor-pointer flex items-center font-[Poppins] 
+      text-gray-800"
         >
-          <svg
-            className="w-6 h-6 text-white"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M4 6h16M4 12h16m-7 6h7"
-            />
-          </svg>
-        </button>
-      </div>
-
-      {/* Mobile menu */}
-      {isOpen && (
-        <div className="absolute left-0 right-0 py-2 bg-gray-800 md:hidden top-full">
-          <div className="flex flex-col items-center">
-            <a
-              href="#"
-              className="px-4 py-2 text-white hover:text-gray-300"
-              onClick={toggleMenu}
-            >
-              Home
-            </a>
-            <a
-              href="#"
-              className="px-4 py-2 text-white hover:text-gray-300"
-              onClick={toggleMenu}
-            >
-              About
-            </a>
-            <a
-              href="#"
-              className="px-4 py-2 text-white hover:text-gray-300"
-              onClick={toggleMenu}
-            >
-              Services
-            </a>
-            <a
-              href="#"
-              className="px-4 py-2 text-white hover:text-gray-300"
-              onClick={toggleMenu}
-            >
-              Contact
-            </a>
-          </div>
+          <span className="text-3xl">
+            <img src="/images/NavLogo.png" alt="navlogo" />
+          </span>
+          <h1 className="ml-2">Landguru</h1>
         </div>
-      )}
-    </nav>
-   </div>
+
+        <div
+          onClick={() => setOpen(!open)}
+          className="absolute text-3xl cursor-pointer right-8 top-6 md:hidden"
+        >
+          <FaBars />
+        </div>
+
+        <ul
+          className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static md:bg-transparent bg-white md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
+            open ? "top-20 " : "top-[-490px]"
+          }`}
+        >
+          {Links.map((link) => (
+            <li key={link.name} className="text-xl md:ml-8 md:my-0 my-7">
+              <a
+                href={link.link}
+                className="text-gray-800 duration-500 hover:text-gray-400"
+              >
+                {link.name}
+              </a>
+            </li>
+          ))}
+          <button className="px-4 py-2 text-sm text-white bg-blue-900 border rounded-full md:hidden">
+            Get Started
+          </button>
+        </ul>
+        <div >
+        <button className="hidden px-4 py-2 text-sm text-white border rounded-full md:block">
+            Get Started
+          </button>
+        </div>
+      </div>
+    </div>
   );
 };
 
